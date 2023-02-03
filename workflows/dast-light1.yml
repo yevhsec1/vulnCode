@@ -1,0 +1,20 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+      - uses: actions/checkout@v3
+    
+      - name: OWASP ZAP Baseline Scan
+        # You may pin to the exact commit or the version.
+        # uses: zaproxy/action-baseline@7cea08522cd386f6c675776d5e4296aecf61f33b
+        uses: zaproxy/action-baseline@v0.7.0
+        with:
+          # Target URL
+          target: "http://evil.com"
